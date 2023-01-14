@@ -1,6 +1,10 @@
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+
+const router = useRouter();
 
 const form = ref({
   email: 'test@test.com',
@@ -13,19 +17,10 @@ const login = async () => {
   try {
     const res = await axios.post('/login', form.value);
     axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.accessToken}`;
-    await getUser();
     errors.value = [];
+    return router.push('/');
   }catch(e) {
     errors.value = e.response.data.message
-  }
-}
-
-const getUser = async () => {
-  try {
-    const res = await axios.get('/user');
-    console.log(res.data);
-  }catch(e) {
-    console.log(e);
   }
 }
 </script>

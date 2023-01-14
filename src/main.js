@@ -10,10 +10,7 @@ import "primeflex/primeflex.css"
 
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
-import axios from 'axios';
-
-axios.defaults.baseURL = "http://localhost:3000/api";
-axios.defaults.withCredentials = true;
+import './axios.js';
 
 const pinia = createPinia();
 
