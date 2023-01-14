@@ -3,8 +3,8 @@ import axios from 'axios';
 import { ref } from 'vue';
 
 const form = ref({
-  email: '',
-  password: ''
+  email: 'test@test.com',
+  password: 'password123'
 })
 
 const errors = ref([]);
@@ -12,10 +12,20 @@ const errors = ref([]);
 const login = async () => {
   try {
     const res = await axios.post('/login', form.value);
-    console.log(res);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.accessToken}`;
+    await getUser();
     errors.value = [];
   }catch(e) {
     errors.value = e.response.data.message
+  }
+}
+
+const getUser = async () => {
+  try {
+    const res = await axios.get('/user');
+    console.log(res.data);
+  }catch(e) {
+    console.log(e);
   }
 }
 </script>
@@ -25,7 +35,7 @@ const login = async () => {
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">Sign In</div>
             <span class="text-600 font-medium line-height-3">アカウントをお持ちではありませんか？</span>
-            <router-link to="#" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">新規登録</router-link>
+            <router-link to="/register" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">新規登録</router-link>
         </div>
 
         <div>
