@@ -22,7 +22,6 @@ const logout = async () => {
               <div class="font-medium text-3xl text-900">Nestjs Vue</div>
           </div>
           <div class="mt-3 lg:mt-0">
-              <Button label="Profile" class="p-button-outlined mr-2" icon="pi pi-user"></Button>
               <Button @click="logout" label="Logout" icon=""></Button>
           </div>
       </div>

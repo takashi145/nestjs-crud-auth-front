@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue';
 import RegisterView from '../views/auth/RegisterView.vue';
 import PostList from '../views/post/Index.vue';
-
+import CreatePost from '../views/post/Create.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 
@@ -28,6 +28,12 @@ const routes = [
     path: '/post',
     name: 'post-list',
     component: PostList,
+    meta: { auth: true }
+  },
+  {
+    path: '/post/create',
+    name: 'create-post',
+    component: CreatePost,
     meta: { auth: true }
   }
 ]

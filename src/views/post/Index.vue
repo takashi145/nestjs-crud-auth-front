@@ -19,6 +19,9 @@ const getPost = async () => {
 </script>
 <template>
   <div class="">
+    <router-link to="/post/create" class="m-3">
+      <Button>作成</Button>
+    </router-link>
     <Card v-for="post in posts" :key="post.id" class="mx-auto my-5">
         <template #title>
             {{ post.title }}
