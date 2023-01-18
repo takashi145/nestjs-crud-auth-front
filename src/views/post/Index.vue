@@ -27,7 +27,7 @@ const getPost = async () => {
             {{ post.title }}
         </template>
         <template #content>
-            <router-link to="/" class="mr-3">
+            <router-link :to="`/post/${post.id}/edit`" class="mr-3">
               <Button>編集</Button>
             </router-link>
 

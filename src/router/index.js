@@ -4,6 +4,7 @@ import LoginView from '../views/auth/LoginView.vue';
 import RegisterView from '../views/auth/RegisterView.vue';
 import PostList from '../views/post/Index.vue';
 import CreatePost from '../views/post/Create.vue';
+import UpdatePost from '../views/post/Update.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 
@@ -35,7 +36,13 @@ const routes = [
     name: 'create-post',
     component: CreatePost,
     meta: { auth: true }
-  }
+  },
+  {
+    path: '/post/:id/edit',
+    name: 'update-post',
+    component: UpdatePost,
+    meta: { auth: true }
+  },
 ]
 
 const router = createRouter({
