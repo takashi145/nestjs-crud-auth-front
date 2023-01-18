@@ -16,7 +16,7 @@ const logout = async () => {
 }
 </script>
 <template>
-  <div class="shadow-2 surface-section w-full py-4 px-3">
+  <div class="mb-1 shadow-2 surface-section w-full py-4 px-3">
       <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row w-full">
           <div>
               <div class="font-medium text-3xl text-900">Nestjs Vue</div>

@@ -6,6 +6,7 @@ axios.defaults.withCredentials = true;
 let refresh = false;
 
 axios.interceptors.response.use(resp => resp, async error => {
+
   if(!refresh && error.response.status === 401) {
     refresh = true;
     const response = await axios.post('refresh');
