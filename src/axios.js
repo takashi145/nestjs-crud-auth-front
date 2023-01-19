@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 axios.defaults.baseURL = "http://localhost:3000/api";
 axios.defaults.withCredentials = true;
 
@@ -16,8 +17,7 @@ axios.interceptors.response.use(resp => resp, async error => {
       return axios(error.config);
     }
   }
-
-  refresh = false
+  refresh = false;
 
   return Promise.reject(error);
 });

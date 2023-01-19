@@ -7,16 +7,19 @@ import "primevue/resources/themes/saga-blue/theme.css"
 import "primevue/resources/primevue.min.css"
 import "primeicons/primeicons.css"
 import "primeflex/primeflex.css"
-
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import './axios.js';
+import ToastService from 'primevue/toastservice';
 
 const pinia = createPinia();
 
 const app = createApp(App);
 
-app.use(PrimeVue).use(pinia).use(router);
-app.component('Button', Button);
-app.component('InputText', InputText);
-app.mount('#app');
+app.use(PrimeVue)
+  .use(ToastService)
+  .use(pinia)
+  .use(router)
+  .component('Button', Button)
+  .component('InputText', InputText)
+  .mount('#app');

@@ -1,20 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue';
 import RegisterView from '../views/auth/RegisterView.vue';
-import PostList from '../views/post/Index.vue';
-import CreatePost from '../views/post/Create.vue';
-import UpdatePost from '../views/post/Update.vue';
-import axios from 'axios';
-import { ref } from 'vue';
+import PostList from '../views/post/PostList.vue';
+import CreatePost from '../views/post/CreatePost.vue';
+import UpdatePost from '../views/post/UpdatePost.vue';
+import { useAuthStore } from '@/store/auth';
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView,
-    meta: { auth: true }
-  },
   {
     path: '/login',
     name: 'login',
@@ -52,24 +44,22 @@ const router = createRouter({
 
 
 router.beforeEach(async (to, from, next) => {
-  const user = ref(null);
-  try {
-    const res = await axios.get('/user');
-    user.value = res.data
-  }finally {
-    if(to.matched.some(record => record.meta.auth)) {
-      if(user.value) {
-        next();
-      }else {
-        next({ name: 'login' });
-      }
+  const authStore = useAuthStore();
+  if(!authStore.user) {
+    await authStore.me();
+  }
+  if(to.matched.some(record => record.meta.auth)) {
+    if(authStore.user) {
+      next();
     }else {
-      if(user.value) {
-        next({ name: '/' });
-      }else {
-        next();
-      }
-    }  
+      next({ name: 'login' });
+    }
+  }else {
+    if(authStore.user) {
+      next({ name: 'post-list' });
+    }else {
+      next();
+    }
   }
 })
 
