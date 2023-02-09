@@ -37,6 +37,10 @@ const logout = async () => {
             </div>
             <Button @click="logout" label="ログアウト" class="bg-gray-500"></Button>
           </div>
+          <div v-else>
+            <router-link to="/login" class="mr-3">ログイン</router-link>
+            <router-link to="/register">新規登録</router-link>
+          </div>
       </div>
   </div>
 

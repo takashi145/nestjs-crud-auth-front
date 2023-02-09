@@ -9,8 +9,10 @@ import "primeicons/primeicons.css"
 import "primeflex/primeflex.css"
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
-import './axios.js';
+import Textarea from 'primevue/textarea';
 import ToastService from 'primevue/toastservice';
+import './axios.js';
+
 
 const pinia = createPinia();
 
@@ -22,4 +24,5 @@ app.use(PrimeVue)
   .use(router)
   .component('Button', Button)
   .component('InputText', InputText)
+  .component('Textarea', Textarea)
   .mount('#app');

@@ -32,7 +32,7 @@ const closeConfirmation = () => {
 
 const getPostList = async () => {
   loading.value = true;
-  await axios.get('/post')
+  await axios.get('/posts')
   .then(res => {
     posts.value = res.data;
     loading.value = false;
@@ -41,8 +41,8 @@ const getPostList = async () => {
 
 const deletePost = async () => {
   if(post_id.value) {
-    await axios.delete(`/post/${post_id.value}`)
-    toast.add({severity: 'warn', summary: 'Warn Message', detail: 'ログアウトしました。', life: 3000});
+    await axios.delete(`/posts/${post_id.value}`)
+    toast.add({severity: 'error', summary: 'Warn Message', detail: '削除しました。', life: 3000});
     await getPostList();
   }
   closeConfirmation();

@@ -4,6 +4,7 @@ import RegisterView from '../views/auth/RegisterView.vue';
 import PostList from '../views/post/PostList.vue';
 import CreatePost from '../views/post/CreatePost.vue';
 import UpdatePost from '../views/post/UpdatePost.vue';
+import NotFound from '../views/NotFound.vue';
 import { useAuthStore } from '@/store/auth';
 
 const routes = [
@@ -35,6 +36,11 @@ const routes = [
     component: UpdatePost,
     meta: { auth: true }
   },
+  {
+    path: '/:catchAll(.*)',
+    name: 'notfound',
+    component: NotFound,
+  }
 ]
 
 const router = createRouter({
