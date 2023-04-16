@@ -6,8 +6,14 @@ import CreatePost from '../views/post/CreatePost.vue';
 import UpdatePost from '../views/post/UpdatePost.vue';
 import NotFound from '../views/NotFound.vue';
 import { useAuthStore } from '@/store/auth';
+import Welcome from '@/views/Welcome.vue';
 
 const routes = [
+  {
+    path: '/',
+    name: 'welcome',
+    component: Welcome
+  },
   {
     path: '/login',
     name: 'login',

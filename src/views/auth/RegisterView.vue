@@ -9,10 +9,10 @@ const router = useRouter();
 const toast = useToast();
 
 const form = ref({
-  name: '',
+  username: '',
   email: '',
   password: '',
-  password_confirm: ''
+  password_confirmation: ''
 });
 
 const errors = ref([]);
@@ -35,9 +35,9 @@ const register = async () => {
 </script>
 <template>
   <div>
-    <form @submit.prevent="register" class="m-auto my-8 surface-card p-6 shadow-2 border-round w-full lg:w-6">
-        <div class="text-center mb-5">
-            <div class="text-900 text-3xl font-medium mb-3">新規登録</div>
+    <form @submit.prevent="register" class="m-auto my-4 surface-card p-6 shadow-2 border-round w-full lg:w-6">
+        <div class="text-center mb-3">
+            <div class="text-900 text-3xl font-medium">新規登録</div>
             <span class="text-600 font-medium line-height-3">すでにアカウントをお持ちですか？</span>
             <router-link to="/login" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">ログイン</router-link>
         </div>
@@ -45,28 +45,24 @@ const register = async () => {
           <li v-for="error in errors" :key="error" class="text-red-500">{{ error }}</li>
         </ul>
         <div>
-            <div class="mb-5">
+            <div class="mb-3">
               <label for="name" class="block text-900 font-medium mb-2">ユーザ名<span class="text-red-400">*</span></label>
-                <InputText id="name" type="text" v-model="form.name" placeholder="User name" class="w-full" />
-                
+              <InputText id="username" type="text" v-model="form.username" placeholder="User name" class="w-full" />
             </div>
            
-            <div class="mb-5">
+            <div class="mb-3">
               <label for="email" class="block text-900 font-medium mb-2">メールアドレス<span class="text-red-400">*</span></label>
               <InputText id="email" type="text" v-model="form.email" placeholder="Email address" class="w-full" />
-              
             </div>
             
-            <div class="mb-5">
+            <div class="mb-3">
               <label for="password" class="block text-900 font-medium mb-2">パスワード<span class="text-red-400">*</span></label>
               <InputText id="password" type="password" v-model="form.password" placeholder="Password" class="w-full" />
-              
             </div>
             
-            <div class="mb-6">
+            <div class="mb-3">
               <label for="password_confirm" class="block text-900 font-medium mb-2">確認用パスワード<span class="text-red-400">*</span></label>
-              <InputText id="password_confirm" type="password" v-model="form.password_confirm" placeholder="Password Confirm" class="w-full" />
-            
+              <InputText id="password_confirmation" type="password" v-model="form.password_confirmation" placeholder="Password Confirm" class="w-full" />
             </div>
            
 

@@ -12,8 +12,8 @@ const router = useRouter();
 const toast = useToast();
 
 const form = ref({
-  email: 'test@test.com',
-  password: 'password'
+  email: 'test@example.com',
+  password: 'password123'
 })
 
 const errors = ref({});
@@ -35,7 +35,7 @@ const login = async () => {
 </script>
 <template>
   <div>
-    <form @submit.prevent="login" class="m-auto mt-8 surface-card p-6 shadow-2 border-round w-full lg:w-6">
+    <form @submit.prevent="login" class="m-auto my-4 surface-card p-6 shadow-2 border-round w-full lg:w-6">
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">ログイン</div>
             <span class="text-600 font-medium line-height-3">アカウントをお持ちではありませんか？</span>
